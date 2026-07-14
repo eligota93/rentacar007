@@ -1,0 +1,354 @@
+<!doctype html>
+<html lang="sq">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#050505">
+  <meta name="description" content="Rent A Car 007 — vetura me qira, shërbim i shpejtë dhe rezervim i menjëhershëm përmes WhatsApp-it.">
+  <meta property="og:title" content="Rent A Car 007 | Vetura me qira">
+  <meta property="og:description" content="Zgjidhni veturën dhe rezervojeni shpejt përmes WhatsApp-it.">
+  <meta property="og:image" content="assets/images/golf-front.webp">
+  <title>Rent A Car 007 | Vetura me qira</title>
+  <link rel="icon" href="assets/images/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Kalo te përmbajtja</a>
+
+  <header class="site-header" id="header">
+    <div class="container header-inner">
+      <a class="brand" href="#ballina" aria-label="Rent A Car 007 — Ballina">
+        <img src="assets/images/logo-header.webp" alt="Logo Rent A Car 007" width="310" height="120">
+      </a>
+
+      <nav class="desktop-nav" aria-label="Navigimi kryesor">
+        <a href="#ballina">Ballina</a>
+        <a href="#veturat">Veturat</a>
+        <a href="#rreth-nesh">Rreth nesh</a>
+        <a href="#vleresimet">Vlerësimet</a>
+        <a href="#kontakt">Kontakt</a>
+      </nav>
+
+      <a class="button button-primary desktop-cta" href="#rezervimi">Rezervo tani</a>
+
+      <button class="menu-toggle" type="button" aria-label="Hap menynë" aria-expanded="false" aria-controls="mobile-menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+
+    <div class="mobile-menu" id="mobile-menu" hidden>
+      <nav aria-label="Navigimi në telefon">
+        <a href="#ballina">Ballina</a>
+        <a href="#veturat">Veturat</a>
+        <a href="#rreth-nesh">Rreth nesh</a>
+        <a href="#vleresimet">Vlerësimet</a>
+        <a href="#kontakt">Kontakt</a>
+        <a class="button button-primary" href="#rezervimi">Rezervo tani</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="ballina" aria-labelledby="hero-title">
+      <div class="hero-media" role="img" aria-label="Volkswagen Golf 7 i zi"></div>
+      <div class="hero-shade"></div>
+      <div class="container hero-content reveal">
+        <p class="eyebrow">RENT A CAR 007</p>
+        <h1 id="hero-title">Vetura me qira, shërbim i shpejtë dhe rezervim i menjëhershëm</h1>
+        <p class="hero-copy">Zgjidhni veturën që ju përshtatet dhe rezervojeni lehtë përmes WhatsApp-it.</p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="#veturat">Shiko veturat</a>
+          <a class="button button-outline whatsapp-link" href="https://wa.me/38344181803?text=P%C3%ABrsh%C3%ABndetje%20Rent%20A%20Car%20007%2C%20jam%20i%20interesuar%20t%C3%AB%20rezervoj%20nj%C3%AB%20vetur%C3%AB.%20Ju%20lutem%20m%C3%AB%20tregoni%20cilat%20vetura%20jan%C3%AB%20t%C3%AB%20lira." target="_blank" rel="noopener">Rezervo në WhatsApp</a>
+        </div>
+        <div class="trust-row" aria-label="Përparësitë kryesore">
+          <span>Rezervim i shpejtë</span>
+          <span>Komunikim direkt</span>
+          <span>Vetura të mirëmbajtura</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="quick-booking section-dark" aria-labelledby="quick-title">
+      <div class="container">
+        <div class="section-heading reveal">
+          <p class="eyebrow">KËRKESË E SHPEJTË</p>
+          <h2 id="quick-title">Kontrolloni disponueshmërinë</h2>
+        </div>
+        <form class="booking-grid js-whatsapp-form reveal" data-form-type="quick" novalidate>
+          <div class="field">
+            <label for="quick-car">Vetura</label>
+            <select id="quick-car" name="car" required>
+              <option value="">Zgjidh veturën</option>
+            </select>
+            <small class="error"></small>
+          </div>
+          <div class="field">
+            <label for="quick-pickup-date">Data e marrjes</label>
+            <input id="quick-pickup-date" name="pickupDate" type="date" required>
+            <small class="error"></small>
+          </div>
+          <div class="field">
+            <label for="quick-return-date">Data e kthimit</label>
+            <input id="quick-return-date" name="returnDate" type="date" required>
+            <small class="error"></small>
+          </div>
+          <div class="field">
+            <label for="quick-location">Lokacioni</label>
+            <input id="quick-location" name="location" type="text" placeholder="Shkruani lokacionin" required>
+            <small class="error"></small>
+          </div>
+          <button class="button button-primary booking-submit" type="submit">Kontrollo disponueshmërinë</button>
+        </form>
+      </div>
+    </section>
+
+    <section class="section" id="veturat" aria-labelledby="fleet-title">
+      <div class="container">
+        <div class="section-heading split-heading reveal">
+          <div>
+            <p class="eyebrow">FLOTA JONË</p>
+            <h2 id="fleet-title">Veturat tona</h2>
+          </div>
+          <p>Zgjidhni veturën që i përshtatet udhëtimit tuaj. Të dhënat teknike dhe çmimet konfirmohen para rezervimit.</p>
+        </div>
+        <div class="fleet-grid" id="fleet-grid"></div>
+      </div>
+    </section>
+
+    <section class="gallery-section section-dark" aria-labelledby="gallery-title">
+      <div class="container">
+        <div class="section-heading reveal">
+          <p class="eyebrow">SHIKO MË AFËR</p>
+          <h2 id="gallery-title">Galeria e veturave</h2>
+          <p>Fotografi demonstruese të modeleve. Fotografitë e sakta të flotës mund të zëvendësohen lehtë.</p>
+        </div>
+      </div>
+      <div class="marquee-shell js-marquee" data-speed="36" aria-label="Galeria lëvizëse e veturave">
+        <div class="marquee-track gallery-track" id="gallery-track"></div>
+      </div>
+    </section>
+
+    <section class="section benefits-section" aria-labelledby="benefits-title">
+      <div class="container">
+        <div class="section-heading reveal">
+          <p class="eyebrow">ZGJEDHJE E THJESHTË</p>
+          <h2 id="benefits-title">Pse Rent A Car 007?</h2>
+        </div>
+        <div class="benefit-grid">
+          <article class="benefit-card reveal">
+            <span class="line-icon" aria-hidden="true">01</span>
+            <h3>Rezervim i menjëhershëm</h3>
+            <p>Dërgoni kërkesën direkt në WhatsApp dhe merrni përgjigje shpejt.</p>
+          </article>
+          <article class="benefit-card reveal">
+            <span class="line-icon" aria-hidden="true">02</span>
+            <h3>Shërbim i shpejtë</h3>
+            <p>Komunikim i qartë dhe proces pa hapa të panevojshëm.</p>
+          </article>
+          <article class="benefit-card reveal">
+            <span class="line-icon" aria-hidden="true">03</span>
+            <h3>Vetura të mirëmbajtura</h3>
+            <p>Vetura të pastra dhe të përgatitura për udhëtimin tuaj.</p>
+          </article>
+          <article class="benefit-card reveal">
+            <span class="line-icon" aria-hidden="true">04</span>
+            <h3>Komunikim direkt</h3>
+            <p>Flisni drejtpërdrejt me ekipin për datat dhe disponueshmërinë.</p>
+          </article>
+          <article class="benefit-card reveal">
+            <span class="line-icon" aria-hidden="true">05</span>
+            <h3>Proces i thjeshtë</h3>
+            <p>Zgjidhni veturën, vendosni datat dhe dërgoni rezervimin.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="about-section section-dark" id="rreth-nesh" aria-labelledby="about-title">
+      <div class="container about-grid">
+        <div class="about-media reveal">
+          <img src="assets/images/jetta-front.webp" alt="Volkswagen Jetta i zi" width="1600" height="1000" loading="lazy">
+          <span class="photo-note">Fotografi demonstruese</span>
+        </div>
+        <div class="about-copy reveal">
+          <p class="eyebrow">RRETH NESH</p>
+          <h2 id="about-title">Shërbim i drejtpërdrejtë, pa komplikime</h2>
+          <p>Rent A Car 007 ofron vetura me qira dhe një proces të thjeshtë rezervimi për klientët që kërkojnë shërbim të shpejtë dhe komunikim direkt.</p>
+          <p>Përmes WhatsApp-it mund të zgjidhni veturën, të dërgoni datat e udhëtimit dhe të kërkoni konfirmimin e rezervimit.</p>
+          <a class="text-link" href="#rezervimi">Filloni rezervimin <span aria-hidden="true">→</span></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section reviews-section" id="vleresimet" aria-labelledby="reviews-title">
+      <div class="container">
+        <div class="section-heading reveal">
+          <p class="eyebrow">PËRSHTYPJET E KLIENTËVE</p>
+          <h2 id="reviews-title">Çfarë thonë klientët tanë</h2>
+          <p>Shembuj të përkohshëm që mund të zëvendësohen me vlerësime reale.</p>
+        </div>
+      </div>
+      <div class="marquee-shell js-marquee" data-speed="24" aria-label="Vlerësime lëvizëse të klientëve">
+        <div class="marquee-track review-track" id="review-track"></div>
+      </div>
+    </section>
+
+    <section class="reservation-section section-dark" id="rezervimi" aria-labelledby="reservation-title">
+      <div class="container reservation-grid">
+        <div class="reservation-intro reveal">
+          <p class="eyebrow">REZERVO TANI</p>
+          <h2 id="reservation-title">Dërgoni kërkesën në WhatsApp</h2>
+          <p>Plotësoni formularin dhe të gjitha të dhënat do të përgatiten automatikisht në një mesazh WhatsApp.</p>
+          <div class="reservation-contact">
+            <a href="tel:+38344181803">+383 44 181 803</a>
+            <a href="https://instagram.com/rentacar_007" target="_blank" rel="noopener">@rentacar_007</a>
+          </div>
+        </div>
+
+        <form class="reservation-form js-whatsapp-form reveal" data-form-type="full" novalidate>
+          <div class="form-two">
+            <div class="field">
+              <label for="first-name">Emri</label>
+              <input id="first-name" name="firstName" type="text" autocomplete="given-name" required>
+              <small class="error"></small>
+            </div>
+            <div class="field">
+              <label for="last-name">Mbiemri</label>
+              <input id="last-name" name="lastName" type="text" autocomplete="family-name" required>
+              <small class="error"></small>
+            </div>
+          </div>
+          <div class="field">
+            <label for="phone">Numri i telefonit</label>
+            <input id="phone" name="phone" type="tel" autocomplete="tel" placeholder="p.sh. +383 4X XXX XXX" required>
+            <small class="error"></small>
+          </div>
+          <div class="field">
+            <label for="full-car">Vetura</label>
+            <select id="full-car" name="car" required>
+              <option value="">Zgjidh veturën</option>
+            </select>
+            <small class="error"></small>
+          </div>
+          <div class="form-two">
+            <div class="field">
+              <label for="pickup-date">Data e marrjes</label>
+              <input id="pickup-date" name="pickupDate" type="date" required>
+              <small class="error"></small>
+            </div>
+            <div class="field">
+              <label for="pickup-time">Ora e marrjes</label>
+              <input id="pickup-time" name="pickupTime" type="time" required>
+              <small class="error"></small>
+            </div>
+          </div>
+          <div class="form-two">
+            <div class="field">
+              <label for="return-date">Data e kthimit</label>
+              <input id="return-date" name="returnDate" type="date" required>
+              <small class="error"></small>
+            </div>
+            <div class="field">
+              <label for="return-time">Ora e kthimit</label>
+              <input id="return-time" name="returnTime" type="time" required>
+              <small class="error"></small>
+            </div>
+          </div>
+          <div class="field">
+            <label for="location">Lokacioni</label>
+            <input id="location" name="location" type="text" required>
+            <small class="error"></small>
+          </div>
+          <div class="field">
+            <label for="message">Mesazh shtesë <span>(opsional)</span></label>
+            <textarea id="message" name="message" rows="4"></textarea>
+            <small class="error"></small>
+          </div>
+          <button class="button button-primary button-wide" type="submit">Dërgo kërkesën në WhatsApp</button>
+          <p class="form-note">Formulari nuk ruan të dhëna; ai vetëm hap mesazhin e përgatitur në WhatsApp.</p>
+        </form>
+      </div>
+    </section>
+
+    <section class="section contact-section" id="kontakt" aria-labelledby="contact-title">
+      <div class="container contact-grid">
+        <div class="section-heading reveal">
+          <p class="eyebrow">KONTAKT</p>
+          <h2 id="contact-title">Na kontaktoni</h2>
+          <p>Për disponueshmëri, çmime dhe rezervime, na kontaktoni direkt.</p>
+        </div>
+        <div class="contact-cards">
+          <a class="contact-card reveal" href="tel:+38344181803">
+            <span>Telefon</span>
+            <strong>+383 44 181 803</strong>
+            <em>Thirr tani →</em>
+          </a>
+          <a class="contact-card reveal" href="https://wa.me/38344181803" target="_blank" rel="noopener">
+            <span>WhatsApp</span>
+            <strong>+383 44 181 803</strong>
+            <em>Shkruaj tani →</em>
+          </a>
+          <a class="contact-card reveal" href="https://instagram.com/rentacar_007" target="_blank" rel="noopener">
+            <span>Instagram</span>
+            <strong>@rentacar_007</strong>
+            <em>Na ndiq →</em>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="final-cta">
+      <div class="container final-cta-inner reveal">
+        <div>
+          <p class="eyebrow">GATI PËR RRUGË?</p>
+          <h2>Rezervoni veturën tuaj sot</h2>
+          <p>Na dërgoni veturën dhe datat që dëshironi.</p>
+        </div>
+        <div class="final-actions">
+          <a class="button button-primary" href="#rezervimi">Rezervo tani</a>
+          <a class="button button-outline" href="#veturat">Shiko veturat</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <img src="assets/images/logo-header.webp" alt="Rent A Car 007" width="310" height="120" loading="lazy">
+        <p>Vetura me qira, shërbim i shpejtë dhe rezervim i menjëhershëm.</p>
+      </div>
+      <div>
+        <h3>Navigimi</h3>
+        <a href="#ballina">Ballina</a>
+        <a href="#veturat">Veturat</a>
+        <a href="#rreth-nesh">Rreth nesh</a>
+        <a href="#vleresimet">Vlerësimet</a>
+      </div>
+      <div>
+        <h3>Kontakti</h3>
+        <a href="tel:+38344181803">+383 44 181 803</a>
+        <a href="https://wa.me/38344181803" target="_blank" rel="noopener">WhatsApp</a>
+        <a href="https://instagram.com/rentacar_007" target="_blank" rel="noopener">@rentacar_007</a>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <p>© 2026 Rent A Car 007. Të gjitha të drejtat e rezervuara.</p>
+      <a href="credits.html">Kreditë e fotografive</a>
+    </div>
+  </footer>
+
+  <a class="mobile-whatsapp" href="https://wa.me/38344181803?text=P%C3%ABrsh%C3%ABndetje%20Rent%20A%20Car%20007%2C%20d%C3%ABshiroj%20t%C3%AB%20rezervoj%20nj%C3%AB%20vetur%C3%AB." target="_blank" rel="noopener" aria-label="Rezervo në WhatsApp">
+    <span aria-hidden="true">◉</span> Rezervo në WhatsApp
+  </a>
+
+  <noscript>
+    <div class="noscript">Aktivizoni JavaScript-in për formularët dhe slideshow-t lëvizës.</div>
+  </noscript>
+
+  <script src="script.js"></script>
+</body>
+</html>

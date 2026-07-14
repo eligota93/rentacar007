@@ -35,6 +35,28 @@ const vehicles = [
     seats: "5 ulëse",
     image: "assets/images/volkswagen-golf-7-2018.webp",
     description: "Volkswagen Golf 7 i vitit 2018 kombinon komoditetin, sigurinë dhe konsum të përshtatshëm për udhëtime në të gjithë Kosovën."
+  },
+  {
+    id: "bmw-m4-2021",
+    number: 4,
+    name: "BMW M4",
+    year: "2021",
+    transmission: "Automatik",
+    fuel: "Benzinë",
+    seats: "4 ulëse",
+    image: "assets/images/gallery-2.webp",
+    description: "BMW M4 ofron performancë sportive, dizajn modern dhe një përvojë premium për udhëtime të veçanta në Kosovë."
+  },
+  {
+    id: "mercedes-amg-gt-2020",
+    number: 5,
+    name: "Mercedes-AMG GT",
+    year: "2020",
+    transmission: "Automatik",
+    fuel: "Benzinë",
+    seats: "2 ulëse",
+    image: "assets/images/gallery-4.webp",
+    description: "Mercedes-AMG GT kombinon elegancën, fuqinë dhe komoditetin për klientët që kërkojnë një veturë ekskluzive."
   }
 ];
 
@@ -140,13 +162,17 @@ function renderVehicles() {
 
 function renderMarquee(trackId, items, template) {
   const track = document.getElementById(trackId);
-  const makeGroup = () => {
+  track.replaceChildren();
+
+  const makeGroup = (isDuplicate = false) => {
     const group = document.createElement("div");
     group.className = "marquee-group";
     group.innerHTML = items.map(template).join("");
+    if (isDuplicate) group.setAttribute("aria-hidden", "true");
     return group;
   };
-  track.append(makeGroup(), makeGroup());
+
+  track.append(makeGroup(), makeGroup(true));
 }
 
 function initializeMarquee(marquee) {
@@ -210,6 +236,8 @@ function initializeMarquee(marquee) {
   });
 
   measure(true);
+  document.fonts?.ready.then(() => measure(false));
+  marquee.classList.add("is-moving");
   requestAnimationFrame(frame);
 }
 

@@ -459,7 +459,7 @@ h1, h2, h3 {
 .hero h1 {
   max-width: 690px;
   margin-bottom: 22px;
-  font-size: clamp(38px, 11vw, 55px);
+  font-size: clamp(34px, 9.2vw, 50px);
   letter-spacing: -0.035em;
 }
 
@@ -760,6 +760,33 @@ h1, h2, h3 {
   display: flex;
   gap: 14px;
   will-change: transform;
+  backface-visibility: hidden;
+  transform: translate3d(0, 0, 0);
+}
+
+.marquee-track.marquee-animated {
+  animation-duration: var(--marquee-duration, 30s);
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-fill-mode: both;
+}
+
+.marquee[data-marquee="left"] .marquee-track.marquee-animated {
+  animation-name: marquee-move-left;
+}
+
+.marquee[data-marquee="right"] .marquee-track.marquee-animated {
+  animation-name: marquee-move-right;
+}
+
+@keyframes marquee-move-left {
+  from { transform: translate3d(0, 0, 0); }
+  to { transform: translate3d(calc(0px - var(--marquee-distance)), 0, 0); }
+}
+
+@keyframes marquee-move-right {
+  from { transform: translate3d(calc(0px - var(--marquee-distance)), 0, 0); }
+  to { transform: translate3d(0, 0, 0); }
 }
 
 .marquee-group {
@@ -881,11 +908,6 @@ h1, h2, h3 {
 .reviews-marquee {
   padding: 22px 0 4px;
   contain: layout paint;
-}
-
-.reviews-marquee .marquee-track {
-  transform: translate3d(0, 0, 0);
-  backface-visibility: hidden;
 }
 
 .review-card {
@@ -1550,7 +1572,7 @@ input:focus, select:focus, textarea:focus {
   }
 
   .hero h1 {
-    font-size: 58px;
+    font-size: 53px;
   }
 
   .hero-description {
@@ -1624,7 +1646,7 @@ input:focus, select:focus, textarea:focus {
   }
 
   .hero h1 {
-    font-size: 58px;
+    font-size: 54px;
   }
 
   .vehicle-grid {
@@ -1651,7 +1673,7 @@ input:focus, select:focus, textarea:focus {
 
 @media (min-width: 1280px) {
   .hero h1 {
-    font-size: 61px;
+    font-size: 57px;
   }
 }
 
@@ -1673,7 +1695,7 @@ input:focus, select:focus, textarea:focus {
   }
 
   .hero h1 {
-    font-size: 36px;
+    font-size: 32px;
   }
 
   .hero-description {
@@ -1718,15 +1740,14 @@ input:focus, select:focus, textarea:focus {
   }
 }
 
-@media (hover: hover) and (pointer: fine) {
-  .marquee:hover .marquee-track {
-    animation-play-state: paused;
-  }
-}
-
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
+  }
+
+  .marquee-track.marquee-animated {
+    animation: none;
+    transform: translate3d(0, 0, 0);
   }
 
   .reveal {

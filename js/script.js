@@ -98,6 +98,30 @@ const reviews = [
     name: "Era Rexhepi",
     text: "Procesi i rezervimit ishte i thjeshtë dhe përgjigjja erdhi menjëherë. Veturën e mora të pastër dhe në kohën e dakorduar.",
     vehicle: "Volkswagen Jetta"
+  },
+  {
+    initials: "BM",
+    name: "Besnik Morina",
+    text: "Marrja e veturës u organizua shumë shpejt dhe pa komplikime. Komunikim korrekt nga fillimi deri në kthim.",
+    vehicle: "BMW M4"
+  },
+  {
+    initials: "DN",
+    name: "Diona Neziri",
+    text: "Vetura ishte komode, e pastër dhe tamam siç ishte prezantuar. Rezervimi përmes WhatsApp-it ishte shumë praktik.",
+    vehicle: "Volkswagen Golf 7"
+  },
+  {
+    initials: "FK",
+    name: "Florent Kelmendi",
+    text: "Shërbim profesional dhe dorëzim në kohën e caktuar. Gjithçka ishte e qartë dhe pa procedura të panevojshme.",
+    vehicle: "Mercedes-AMG GT"
+  },
+  {
+    initials: "AM",
+    name: "Arta Mustafa",
+    text: "Përgjigje e shpejtë, veturë shumë e mirëmbajtur dhe proces i lehtë rezervimi. Përvojë shumë pozitive.",
+    vehicle: "Volkswagen Jetta"
   }
 ];
 
@@ -177,68 +201,42 @@ function renderMarquee(trackId, items, template) {
 
 function initializeMarquee(marquee) {
   const track = marquee.querySelector(".marquee-track");
-  const firstGroup = track.querySelector(".marquee-group");
-  const direction = marquee.dataset.marquee === "right" ? 1 : -1;
-  const baseSpeed = Number(marquee.dataset.speed || 40);
-  let speed = baseSpeed;
-  let groupDistance = 0;
-  let offset = 0;
-  let previousTime = performance.now();
-  let paused = false;
+  const firstGroup = track?.querySelector(".marquee-group");
+  if (!track || !firstGroup) return;
+
+  const speed = Math.max(Number(marquee.dataset.speed || 40), 20);
   let resizeTimer;
 
-  function measure(reset = false) {
-    const style = getComputedStyle(track);
-    const gap = parseFloat(style.columnGap || style.gap || "0");
-    const oldDistance = groupDistance || 1;
-    const progress = direction === -1 ? Math.abs(offset) / oldDistance : (offset + oldDistance) / oldDistance;
-    groupDistance = firstGroup.getBoundingClientRect().width + gap;
+  function measure() {
+    const trackStyle = getComputedStyle(track);
+    const gap = parseFloat(trackStyle.columnGap || trackStyle.gap || "0");
+    const distance = firstGroup.getBoundingClientRect().width + gap;
+    if (!Number.isFinite(distance) || distance <= 0) return;
 
-    if (reset) {
-      offset = direction === -1 ? 0 : -groupDistance;
-    } else if (direction === -1) {
-      offset = -(progress % 1) * groupDistance;
-    } else {
-      offset = -groupDistance + (progress % 1) * groupDistance;
-    }
-    track.style.transform = `translate3d(${offset}px,0,0)`;
-  }
+    track.style.setProperty("--marquee-distance", `${distance}px`);
+    track.style.setProperty("--marquee-duration", `${Math.max(distance / speed, 14)}s`);
 
-  function frame(now) {
-    const delta = Math.min((now - previousTime) / 1000, 0.05);
-    previousTime = now;
-
-    if (!paused && groupDistance > 0) {
-      offset += direction * speed * delta;
-      if (direction === -1 && offset <= -groupDistance) offset += groupDistance;
-      if (direction === 1 && offset >= 0) offset -= groupDistance;
-      track.style.transform = `translate3d(${offset}px,0,0)`;
-    }
-    requestAnimationFrame(frame);
+    // Restart once after measuring so movement begins immediately and stays seamless.
+    track.classList.remove("marquee-animated");
+    void track.offsetWidth;
+    track.classList.add("marquee-animated");
+    marquee.classList.add("is-moving");
   }
 
   const images = [...track.querySelectorAll("img")];
   Promise.all(images.map((img) => img.complete ? Promise.resolve() : new Promise((resolve) => {
     img.addEventListener("load", resolve, { once: true });
     img.addEventListener("error", resolve, { once: true });
-  }))).then(() => measure(true));
+  }))).then(measure);
 
-  marquee.addEventListener("mouseenter", () => {
-    if (matchMedia("(hover:hover) and (pointer:fine)").matches) paused = true;
-  });
-  marquee.addEventListener("mouseleave", () => { paused = false; });
-  marquee.addEventListener("touchstart", () => { speed = baseSpeed * 0.65; }, { passive: true });
-  marquee.addEventListener("touchend", () => { speed = baseSpeed; }, { passive: true });
+  document.fonts?.ready.then(measure);
 
   window.addEventListener("resize", () => {
     clearTimeout(resizeTimer);
-    resizeTimer = setTimeout(() => measure(false), 140);
-  });
+    resizeTimer = setTimeout(measure, 160);
+  }, { passive: true });
 
-  measure(true);
-  document.fonts?.ready.then(() => measure(false));
-  marquee.classList.add("is-moving");
-  requestAnimationFrame(frame);
+  requestAnimationFrame(measure);
 }
 
 function setupMobileMenu() {
